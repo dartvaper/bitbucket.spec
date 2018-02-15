@@ -1,0 +1,17 @@
+[Unit]
+Description=Atlassian Bitbucket Server Service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=bitbucket
+Environment=JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk/
+Environment=BITBUCKET_HOME=/home/bitbucket/
+ExecStart=/var/lib/atlassian-bitbucket/bin/start-bitbucket.sh
+ExecStop=/var/lib/atlassian-bitbucket/bin/stop-bitbucket.sh
+# Uncomment to listen <1000 port from user:
+#AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+
+[Install]
+WantedBy=multi-user.target
